@@ -134,3 +134,4 @@ C:\_Doc Dufour\AnguGameNew\AnguGameNew\bin\Debug\net8.0\runtimes\win\lib\net6.0\
 C:\_Doc Dufour\AnguGameNew\AnguGameNew\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Security.Cryptography.ProtectedData.dll
 C:\_Doc Dufour\AnguGameNew\AnguGameNew\bin\Debug\net8.0\runtimes\win\lib\net6.0\System.Windows.Extensions.dll
 C:\_Doc Dufour\AnguGameNew\AnguGameNew\obj\Debug\net8.0\AnguGame.2DF169D3.Up2Date
+C:\_Doc Dufour\AnguGameNew\AnguGameNew\obj\Debug\net8.0\AnguGameNew.sourcelink.json

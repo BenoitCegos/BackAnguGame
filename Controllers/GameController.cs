@@ -21,7 +21,7 @@ namespace AnguGameNew.Controllers
         }
 
   
-        [HttpGet("{id}")]
+        [HttpGet("list/{id}")]
         public async Task<ActionResult<Jeu>> Getjeu(int id)
         {
             var jeu = await _DB.jeux.FindAsync(id);
@@ -33,7 +33,7 @@ namespace AnguGameNew.Controllers
         }
         //Put
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
-        [HttpPut("{id}")]
+        [HttpPut("put/{id}")]
         public async Task<IActionResult> PutJeu(int id, Jeu jeu)
         {
             if (id != jeu.Id)
@@ -58,7 +58,6 @@ namespace AnguGameNew.Controllers
                     throw;
                 }
             }
-
             return NoContent();
         }
 

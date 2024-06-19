@@ -8,12 +8,25 @@ namespace AnguGameNew
         {
             var builder = WebApplication.CreateBuilder(args);
 
+            builder.Services.AddCors(options =>
+            {
+                options.AddDefaultPolicy(
+                    builder =>
+                    {
+                        builder.WithOrigins("*")
+                            .AllowAnyHeader()
+                            .AllowAnyMethod();
+                    });
+            });
+
+
             builder.Services.AddDbContext<GameContext>();
 
             // Add services to the container.
             builder.Services.AddControllersWithViews();
 
             var app = builder.Build();
+            app.UseCors();
 
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())
