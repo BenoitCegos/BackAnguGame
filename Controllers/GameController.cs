@@ -1,26 +1,76 @@
-﻿using AnguGameNew.Models;
+﻿using AnguGameNew.Controllers.DAO;
+using AnguGameNew.Models;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 
 namespace AnguGameNew.Controllers
 {
     public class GameController : Controller
     {
-        private readonly GameContext _DB;
+        private readonly JeuDao _DAO;
 
-        public GameController(GameContext context)
+        public GameController(JeuDao dao)
         {
-            _DB = context;
+            _DAO = dao;
         }
 
-       
+        /*
+
+
+                public <- accessibilité de la fonction
+                async <- declarer la fonction comme asynchrone (elle est utiliser par un autre thread)
+                Task<ActionResult<IEnumerable<Jeu>>>  <- Type de la valeur de retour de la fonction
+                Getjeux <- nom de la fonction
+                () <- parametres
+                public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
+                {
+                    return await _DB.jeux.ToListAsync();
+                }
+        
+                Dans le cas ou je return un object DTO*/
+
+
+                /*public async Task<ActionResult<IEnumerable<JeuDTO>>> Getjeux()
+                {
+                    var listeJeu = await _DB.jeux.ToListAsync();
+                foreach (var Jeu in _DB.jeux)
+                {
+                   jeuxDTO.  
+                }
+                return jeuxDTO;
+                }*/
+
+                 //Dans le cas ou je recois un object DTO
+         
+                 /*public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
+                {
+                    //Jeu classique = dto.toJeu();
+                    foreach( Jeu varJeu in _DB.jeux)
+                    {
+                        
+                    }
+                    JeuDTO monJeu= new JeuDTO();
+                    return await() ;
+                }*/
+         
+
+        
         [HttpGet("jeux")]
         public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
         {
-            return await _DB.jeux.ToListAsync();
+            var jeux =  await _DAO.GetJeux();
+            return jeux;
         }
+        
 
-  
+        //DTO Version
+        /*[HttpGet("jeux")]
+        public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
+        {
+          return await _DB.jeux.ToListAsync();
+        }*/
+
         [HttpGet("list/{id}")]
         public async Task<ActionResult<Jeu>> Getjeu(int id)
         {
