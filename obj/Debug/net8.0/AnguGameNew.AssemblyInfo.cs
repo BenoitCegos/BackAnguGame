@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("AnguGameNew")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a8b300fec65823ab3929a41b9028a5bb4c0b92fc")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+e24fff10907b352cb56a72fc9afa2461cdbcfe41")]
 [assembly: System.Reflection.AssemblyProductAttribute("AnguGameNew")]
 [assembly: System.Reflection.AssemblyTitleAttribute("AnguGameNew")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

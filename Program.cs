@@ -28,7 +28,7 @@ namespace AnguGameNew
             builder.Services.AddScoped<JeuDao>();
        
             var app = builder.Build();
-
+            // important ajout du cors
             app.UseCors();
             // Configure the HTTP request pipeline.
             if (!app.Environment.IsDevelopment())

@@ -65,18 +65,18 @@ namespace AnguGameNew.Controllers
         public async Task<ActionResult<Jeu>> Getjeu(int id)
         {
             var jeu = await _DAO.GetJeu(id);
-            return jeu;
+            return Ok(jeu);
             
         }
 
-        [HttpPost]
+        [HttpPost("jeux")]
         public async Task<ActionResult<Jeu>> PostJeu(Jeu jeu)
         {
             await _DAO.AddJeu(jeu);
             return CreatedAtAction("GetJeu", new { id = jeu.Id }, jeu);
         }
 
-        [HttpPut("{id}")]
+        [HttpPut("/jeux/{id}")]
         public async Task<IActionResult> PutJeu(int id, Jeu jeu)
         {
             if (id != jeu.Id)
@@ -89,7 +89,7 @@ namespace AnguGameNew.Controllers
             return NoContent();
         }
 
-        [HttpDelete("{id}")]
+        [HttpDelete("/jeux/{id}")]
         public async Task<IActionResult> DeleteJeu(int id)
         {
             var success = await _DAO.DeleteJeu(id);
