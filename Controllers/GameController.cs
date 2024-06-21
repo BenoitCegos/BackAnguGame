@@ -61,12 +61,44 @@ namespace AnguGameNew.Controllers
             return Ok(reponse);
         }
 
-        [HttpGet("list/{id}")]
+        [HttpGet("jeux/{id}")]
         public async Task<ActionResult<Jeu>> Getjeu(int id)
         {
             var jeu = await _DAO.GetJeu(id);
             return jeu;
             
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Jeu>> PostJeu(Jeu jeu)
+        {
+            await _DAO.AddJeu(jeu);
+            return CreatedAtAction("GetJeu", new { id = jeu.Id }, jeu);
+        }
+
+        [HttpPut("{id}")]
+        public async Task<IActionResult> PutJeu(int id, Jeu jeu)
+        {
+            if (id != jeu.Id)
+            {
+                return BadRequest();
+            }
+
+            await _DAO.UpdateJeu(jeu);
+
+            return NoContent();
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteJeu(int id)
+        {
+            var success = await _DAO.DeleteJeu(id);
+            if (!success)
+            {
+                return NotFound();
+            }
+
+            return NoContent();
         }
 
         //DTO Version
@@ -149,4 +181,4 @@ namespace AnguGameNew.Controllers
             return _DB.jeux.Any(e => e.Id == id);
         }*/
     }
-}
+    }

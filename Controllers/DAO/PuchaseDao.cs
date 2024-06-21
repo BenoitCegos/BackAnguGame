@@ -20,15 +20,15 @@ public class PurchaseDao
 
     public async Task<IEnumerable<Purchase>> GetPurchases()
     {
-        return await _context.Purchases.Include(p => p.PurchaseArticles)
-                                       .ThenInclude(pa => pa.Article)
+        return await _context.Purchases.Include(p => p.PurchaseJeus)
+                                       .ThenInclude(pa => pa.Jeu)
                                        .ToListAsync();
     }
 
     public async Task<Purchase> GetPurchase(int id)
     {
-        return await _context.Purchases.Include(p => p.PurchaseArticles)
-                                       .ThenInclude(pa => pa.Article)
+        return await _context.Purchases.Include(p => p.PurchaseJeus)
+                                       .ThenInclude(pa => pa.Jeu)
                                        .FirstOrDefaultAsync(p => p.PurchaseId == id);
     }
 

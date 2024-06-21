@@ -21,16 +21,16 @@ public class UserDao
     public async Task<IEnumerable<User>> GetUsers()
     {
         return await _context.Users.Include(u => u.Purchases)
-                                   .ThenInclude(p => p.PurchaseArticles)
-                                   .ThenInclude(pa => pa.Article)
+                                   .ThenInclude(p => p.PurchaseJeus)
+                                   .ThenInclude(pa => pa.Jeu)
                                    .ToListAsync();
     }
 
     public async Task<User> GetUser(int id)
     {
         return await _context.Users.Include(u => u.Purchases)
-                                   .ThenInclude(p => p.PurchaseArticles)
-                                   .ThenInclude(pa => pa.Article)
+                                   .ThenInclude(p => p.PurchaseJeus)
+                                   .ThenInclude(pa => pa.Jeu)
                                    .FirstOrDefaultAsync(u => u.UserId == id);
     }
 

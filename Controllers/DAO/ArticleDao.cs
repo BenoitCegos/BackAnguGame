@@ -8,45 +8,45 @@ using exemple.Data;
 
 namespace exemple.Models;
 
-public class ArticleDao
+public class JeuDao
 {
     private readonly ApplicationDbContext _context;
 
-    public ArticleDao(ApplicationDbContext context)
+    public JeuDao(ApplicationDbContext context)
     {
         _context = context;
     }
 
-    public async Task<IEnumerable<Article>> GetArticles()
+    public async Task<IEnumerable<Jeu>> GetJeus()
     {
-        return await _context.Articles.ToListAsync();
+        return await _context.Jeus.ToListAsync();
     }
 
-    public async Task<Article> GetArticle(int id)
+    public async Task<Jeu> GetJeu(int id)
     {
-        return await _context.Articles.FindAsync(id);
+        return await _context.Jeus.FindAsync(id);
     }
 
-    public async Task<Article> AddArticle(Article article)
+    public async Task<Jeu> AddJeu(Jeu Jeu)
     {
-        _context.Articles.Add(article);
+        _context.Jeus.Add(Jeu);
         await _context.SaveChangesAsync();
-        return article;
+        return Jeu;
     }
 
-    public async Task<Article> UpdateArticle(Article article)
+    public async Task<Jeu> UpdateJeu(Jeu Jeu)
     {
-        _context.Entry(article).State = EntityState.Modified;
+        _context.Entry(Jeu).State = EntityState.Modified;
         await _context.SaveChangesAsync();
-        return article;
+        return Jeu;
     }
 
-    public async Task<bool> DeleteArticle(int id)
+    public async Task<bool> DeleteJeu(int id)
     {
-        var article = await _context.Articles.FindAsync(id);
-        if (article == null) return false;
+        var Jeu = await _context.Jeus.FindAsync(id);
+        if (Jeu == null) return false;
 
-        _context.Articles.Remove(article);
+        _context.Jeus.Remove(Jeu);
         await _context.SaveChangesAsync();
         return true;
     }
