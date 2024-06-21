@@ -57,8 +57,8 @@ namespace AnguGameNew.Controllers
         [HttpGet("jeux")]
         public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
         {
-            var maListeJeux =  await _DAO.GetJeux();
-            return maListeJeux ;
+            var reponse = await _DAO.GetJeux();
+            return Ok(reponse);
         }
 
         [HttpGet("list/{id}")]

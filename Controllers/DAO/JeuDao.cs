@@ -25,26 +25,26 @@ namespace AnguGameNew.Controllers.DAO
             return await _DB.jeux.ToListAsync();
                    }
 
-        public async Task<Jeu> GetArticle(int id)
+        public async Task<Jeu> GetJeu(int id)
         {
             return await _DB.jeux.FindAsync(id);
         }
 
-        public async Task<Jeu> AddArticle(Jeu Jeu)
+        public async Task<Jeu> AddJeu(Jeu Jeu)
         {
             _DB.jeux.Add(Jeu);
             await _DB.SaveChangesAsync();
             return Jeu;
         }
 
-        public async Task<Jeu> UpdateArticle(Jeu Jeu)
+        public async Task<Jeu> UpdateJeu(Jeu Jeu)
         {
             _DB.Entry(Jeu).State = EntityState.Modified;
             await _DB.SaveChangesAsync();
             return Jeu;
         }
 
-        public async Task<bool> DeleteArticle(int id)
+        public async Task<bool> DeleteJeu(int id)
         {
             var Jeu = await _DB.jeux.FindAsync(id);
             if (Jeu == null) return false;
