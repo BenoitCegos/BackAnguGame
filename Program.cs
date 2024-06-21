@@ -1,3 +1,4 @@
+using AnguGameNew.Controllers.DAO;
 using AnguGameNew.Models;
 
 namespace AnguGameNew
@@ -23,9 +24,9 @@ namespace AnguGameNew
             });
 
             builder.Services.AddDbContext<GameContext>();
-            //ajout srvice
-            builder.Services.Addscope<GameContext>();
-
+            //ajout des services pour chaque DAO
+            builder.Services.AddScoped<JeuDao>();
+       
             var app = builder.Build();
 
             app.UseCors();

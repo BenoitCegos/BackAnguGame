@@ -59,8 +59,8 @@ namespace AnguGameNew.Controllers
         [HttpGet("jeux")]
         public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
         {
-            var jeux =  await _DAO.GetJeux();
-            return jeux;
+            var jeuxList =  await _DAO.GetJeux();
+            return jeuxList;
         }
         
 
@@ -71,6 +71,7 @@ namespace AnguGameNew.Controllers
           return await _DB.jeux.ToListAsync();
         }*/
 
+        /*
         [HttpGet("list/{id}")]
         public async Task<ActionResult<Jeu>> Getjeu(int id)
         {
@@ -137,7 +138,7 @@ namespace AnguGameNew.Controllers
 
             return NoContent();
         }
-
+        */
         private bool jeuExists(int id)
         {
             return _DB.jeux.Any(e => e.Id == id);
