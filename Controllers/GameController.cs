@@ -16,9 +16,7 @@ namespace AnguGameNew.Controllers
         }
 
         /*
-
-
-                public <- accessibilité de la fonction
+               public <- accessibilité de la fonction
                 async <- declarer la fonction comme asynchrone (elle est utiliser par un autre thread)
                 Task<ActionResult<IEnumerable<Jeu>>>  <- Type de la valeur de retour de la fonction
                 Getjeux <- nom de la fonction
@@ -59,10 +57,17 @@ namespace AnguGameNew.Controllers
         [HttpGet("jeux")]
         public async Task<ActionResult<IEnumerable<Jeu>>> Getjeux()
         {
-            var jeuxList =  await _DAO.GetJeux();
-            return jeuxList;
+            var maListeJeux =  await _DAO.GetJeux();
+            return maListeJeux ;
         }
-        
+
+        [HttpGet("list/{id}")]
+        public async Task<ActionResult<Jeu>> Getjeu(int id)
+        {
+            var jeu = await _DAO.GetJeu(id);
+            return jeu;
+            
+        }
 
         //DTO Version
         /*[HttpGet("jeux")]
@@ -139,9 +144,9 @@ namespace AnguGameNew.Controllers
             return NoContent();
         }
         */
-        private bool jeuExists(int id)
+        /*private bool jeuExists(int id)
         {
             return _DB.jeux.Any(e => e.Id == id);
-        }
+        }*/
     }
 }
